@@ -21,15 +21,16 @@ void fillInArray(char array[arraySize][arraySize]) {
 
 bool checkIfWin(char array[arraySize][arraySize]) {
     for (int i = 0; i < arraySize; ++i) {
-        if ((array[i][0] == array[i][1]) && (array[i][1] == array[i][2]) && (array[i][0] != '-'))
+        if ((array[i][0] != '-') && (array[i][0] == array[i][1]) && (array[i][1] == array[i][2]))
             return true;
         else if ((array[0][i] == array[1][i]) && (array[1][i] == array[2][i]) && (array[0][i] != '-'))
             return true;
-        else if ((array[0][0] == array[1][1]) && (array[1][1] == array[2][2]) && (array[0][0] != '-'))
-            return true;
-        else if ((array[2][0] == array[1][1]) && (array[1][1] == array[0][2]) && (array[1][1] != '-'))
-            return true;
     }
+    if ((array[0][0] != '-') && (array[0][0] == array[1][1]) && (array[1][1] == array[2][2]))
+        return true;
+    if ((array[1][1] != '-') && (array[2][0] == array[1][1]) && (array[1][1] == array[0][2]))
+        return true;
+
     return false;
 }
 
@@ -93,8 +94,7 @@ int main() {
         if (checkIfWin(board)) {
             std::cout << "Koniec gry!";
             break;
-        }
-        else if (draw(board)){
+        } else if (draw(board)) {
             std::cout << "Koniec gry - remis!";
             break;
         }
