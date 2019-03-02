@@ -45,10 +45,7 @@ bool draw(char array[arraySize][arraySize]) {
 }
 
 bool fieldEmpty(char array[arraySize][arraySize], int row, int column) {
-    if (array[row][column] == '-')
-        return true;
-    else
-        return false;
+    return array[row][column] == '-';
 }
 
 char checkMark(int counter) {
